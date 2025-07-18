@@ -76,10 +76,6 @@ chatForm.addEventListener('submit', async (e) => {
     const data = await res.json();
     addMessage(data.reply || data.message || '-', 'model');
     chatHistory.push({ role: 'model', content: data.reply || data.message || '-' });
-    // Trimming jika history terlalu panjang (opsional)
-    if (chatHistory.length > 20) {
-      chatHistory = chatHistory.slice(chatHistory.length - 20);
-    }
   } catch (err) {
     removeLoading();
     addMessage('Network error.', 'model');
